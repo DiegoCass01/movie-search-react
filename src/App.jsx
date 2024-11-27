@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
-import './App.css'
+import { useState } from 'react'
 import { Movies } from './components/Movies'
 import { useMovies } from './hooks/useMovies'
+import './App.css'
 
 function App() {
   const { movies } = useMovies()
@@ -17,24 +17,24 @@ function App() {
   }
 
   const handleChange = (event) => {
-    setQuery(event.target.value)
-  }
-
-  useEffect(() => {
-    if (query === '') {
+    const newQuery = event.target.value
+    setQuery(newQuery)
+    if (newQuery === '') {
       setError('No se puede buscar una película vacía')
       return
     }
-    if (query.match(/^\d+$/)) {
-      setError('No se puede buscar una pelicula co un número')
+    if (newQuery.match(/^\d+$/)) {
+      setError('No se puede buscar una pelicula con un número')
       return
     }
-    if (query.length < 3) {
+    if (newQuery.length < 3) {
       setError('La búsqueda debe tener al menos 3 caracteres')
       return
     }
     setError(null)
-  }, [query])
+  }
+
+
 
   return (
     <div className='page'>
