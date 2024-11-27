@@ -18,6 +18,7 @@ function App() {
 
   const handleChange = (event) => {
     const newQuery = event.target.value
+    if (newQuery.startsWith(' ')) return
     setQuery(newQuery)
     if (newQuery === '') {
       setError('No se puede buscar una película vacía')
