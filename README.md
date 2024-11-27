@@ -1,7 +1,7 @@
 # Crea una aplicación para buscar películas
 
-API url: - https://www.omdbapi.com/ 
-API Key: - e7863ab6
+API url: - https://www.omdbapi.com/
+API key: - e7863ab6
 
 Requerimientos:
 
