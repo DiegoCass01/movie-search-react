@@ -16,7 +16,12 @@ export function useMovies({ search }) {
 
   const getMovies = () => {
     if (search) {
-      setResponseMovies(withResults);
+      // setResponseMovies(withResults);
+      fetch(`https://www.omdbapi.com/?apikey=e7863ab6&s=${search}`)
+        .then((res) => res.json())
+        .then((json) => {
+          setResponseMovies(json);
+        });
     } else {
       setResponseMovies(withoutResults);
     }
