@@ -33,7 +33,7 @@ function useSearch() {
 
 function App() {
   const { search, updateSearch, error } = useSearch()
-  const { movies, getMovies } = useMovies({ search })
+  const { movies, loading, getMovies } = useMovies({ search })
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -49,13 +49,19 @@ function App() {
       <header>
         <h1>Movie Search</h1>
         <form className="form" onSubmit={handleSubmit} >
-          <input onChange={handleChange} value={search} name='query' placeholder='Avengers, Star Wars...' />
+          <input style={{
+            border: '1px solid transparnt',
+            borderColor: error ? 'red' : 'transparent'
+          }} onChange={handleChange} value={search} name='query' placeholder='Avengers, Star Wars...' />
           <button type="submit">Search</button>
         </form>
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </header>
+
       <main>
-        <Movies movies={movies} />
+        {
+          loading ? <p>Loading...</p> : <Movies movies={movies} />
+        }
       </main>
     </div>
   )
