@@ -8,7 +8,7 @@ export function useMovies({ search, sort }) {
   const previousSearch = useRef(search);
 
   const getMovies = useMemo(() => {
-    return async () => {
+    return async ({ search }) => {
       if (search === previousSearch.current) return;
       try {
         setLoading(true);
@@ -22,7 +22,7 @@ export function useMovies({ search, sort }) {
         setLoading(false);
       }
     };
-  }, [search]);
+  }, []);
 
   // const sortedMovies = sort
   //   ? [...movies].sort((a, b) => a.title.localeCompare(b.title))
