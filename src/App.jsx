@@ -56,7 +56,7 @@ function App() {
   const handleChange = (event) => {
     const newSearch = event.target.value
     updateSearch(newSearch)
-    debouncedGetMovies({ newSearch })
+    debouncedGetMovies(newSearch)
   }
 
   return (
